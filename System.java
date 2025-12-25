@@ -41,9 +41,41 @@ abstract class LibraryItem{
 }
 
 class Book extends LibraryItem{
+    String author;
     double fine = 0.20;
-    Book(String id, String t, boolean a){
+    Book(String id, String t, boolean a, String au){
         super(id,t,a);
+        this.author = au;
     }
     
+    @Override
+    void displayInfo(){
+        super.displayInfo();
+        System.out.println("Author: "+ author);
+    }
+    
+    @Override
+    int CalculateFine(int days){
+        return fine*days;
+    }
+}
+
+class Magazine extends LibraryItem{
+    double fine = 0.10;
+    int issueNumber;
+    Book(String id, String t, boolean a, int i){
+        super(id,t,a);
+        this.issueNumber = i;
+    }
+    
+    @Override
+    void displayInfo(){
+        super.displayInfo();
+        System.out.println("Issue Number: "+ issueNumber);
+    }
+    
+    @Override
+    int CalculateFine(int days){
+        return fine*days;
+    }
 }
